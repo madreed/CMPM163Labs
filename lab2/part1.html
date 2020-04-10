@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab 2: Intro to Three.js Part 1</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+		<script src="../three.js-master/build/three.js"></script>
+		<script>
+			// Our Javascript will go here.
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera(75, 
+			window.innerWidth/window.innerHeight, 0.1, 1000);
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+
+			//Creating the cube
+			var geometry = new THREE.BoxGeometry();
+			var material = new THREE.MeshBasicMaterial( {color: 0xff2975} );
+			var material2 = new THREE.MeshBasicMaterial( {color: 0x8c1eff} );
+			var material3 = new THREE.MeshBasicMaterial( {color: 0xf222ff} );
+   		  	var cube1 = new THREE.Mesh(geometry, material);
+   		  	var cube2 = new THREE.Mesh(geometry, material2);   		  	
+   		  	var cube3 = new THREE.Mesh(geometry, material3);
+   		  	var num = 0;
+   		  	var bool = false;
+			scene.add(cube1);
+			scene.add(cube2);
+			scene.add(cube3);
+			cube2.position.x = 2;
+			cube3.position.x = -2;
+			camera.position.z = 5; //this moves the camera towards the viewer
+
+
+			//Putting the cube on screen
+			function animate() {
+			requestAnimationFrame(animate);
+			renderer.render(scene, camera);
+			//Adding the rotation
+			cube1.rotateZ(0.01);
+			cube1.rotateY(0.01);
+			cube2.rotateY(0.01);
+			cube3.rotateY(-0.01);
+			//My for loop kept breaking so here is this disaster
+			if(!bool){
+				if(num < .5)
+					num += 0.3;
+				else
+					bool = true;
+			}
+			else{
+				if(num > -1.5)
+					num -=0.05;
+				else
+					bool = false;
+			}
+
+			cube1.position.z = num;
+			};
+			animate();
+			//Imma add sound to my video
+		</script>
+	</body>
+</html>
