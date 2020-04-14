@@ -4,4 +4,4 @@ Lab2:
 https://drive.google.com/file/d/1WHJEY7_bpqKe5usgXG5PvFsvLDE5lwiy/view?usp=sharing
 
 https://drive.google.com/file/d/1foAuwsBSXd9OmRfAQARxaT2HVnq7Qmmt/view?usp=sharing
-![](lab2/lab2 part 2.png)
+![](lab2/lab2 part 2.jpg)
