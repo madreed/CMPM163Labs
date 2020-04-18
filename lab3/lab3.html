@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Lab 3: Cubes Again!</title>
+	<style>
+		body { margin: 0; }
+		canvas { display: block; }
+	</style>
+</head>
+<body>
+	<script src="../three.js-master/build/three.js"></script>
+	<script>
+
+		THREE.Cache.enabled = true;
+		var count = 0;
+		var loader = new THREE.FileLoader();
+		var fshader, vshader, fshader2, vshader2;
+		var clock = new THREE.Clock(); //This is for the lava shader.
+		var uniforms2, mesh2;
+
+		var textureLoader = new THREE.TextureLoader();
+
+		uniforms2 = {
+
+			"fogDensity": { value: 0.45 },
+			"fogColor": { value: new THREE.Vector3( 0, 0, 0 ) },
+			"time": { value: 1.0 },
+			"uvScale": { value: new THREE.Vector2( 3.0, 1.0 ) },
+			"texture1": { value: textureLoader.load( 'textures/pattern.png' ) },
+			"texture2": { value: textureLoader.load( 'textures/yay.jpg' ) },
+
+		}; // adding some textures to the uniforms
+
+		var size = 0.65;
+
+			//loading shaders
+			loader.load('shaders/vertexShader.vert',
+			// onLoad callback
+			function (data) {
+				vshader = data;
+				count += 1;
+				addCoolCube(); // we will write this method
+			},
+			// onProgress callback
+			function (xhr) {
+				console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+			},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
+
+			loader.load('shaders/fragmentShader.frag',
+			// onLoad callback
+			function (data) {
+				fshader = data;
+				count += 1;
+				addCoolCube(); // we will write this method
+			},
+			// onProgress callback
+			function (xhr) {
+				console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+			},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
+
+				//loading shaders
+				loader.load('shaders/vertexShader2.vert',
+			// onLoad callback
+			function (data) {
+				vshader2 = data;
+				count += 1;
+				addCube4();
+			},
+			// onProgress callback
+			function (xhr) {
+				console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+			},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
+
+				loader.load('shaders/fragmentShader2.frag',
+			// onLoad callback
+			function (data) {
+				fshader2 = data;
+				count += 1;
+				addCube4();
+			},
+			// onProgress callback
+			function (xhr) {
+				console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+			},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
+
+			// I wanted to reuse the cubes I had before so this contains the same code as lab2 part 1
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+			camera.position.z = 5; 
+
+			//Creating the cubes
+			var geometry = new THREE.BoxGeometry();
+			var material = new THREE.MeshPhongMaterial( {color: 0x00ff00, specular: 0x00ff00, shininess: 30} );
+			var material2 = new THREE.MeshBasicMaterial( {color: 0x00ff00, wireframe: true} );
+			var material3, material4, geometry3, geometry4, mesh1;
+			var cube1 = new THREE.Mesh(geometry, material);
+			var cube2 = new THREE.Mesh(geometry, material2);   		  	
+   		  	var num = 0; //num & bool are what I use to scale the center cube
+   		  	var bool = false;
+   		  	scene.add(cube1);
+   		  	scene.add(cube2);
+   		  	cube2.position.x = 2;
+
+
+			//Adding a light
+			var light = new THREE.PointLight(0xffffff, 1, 1000);
+			light.position.set(10, 10, 10);
+			scene.add(light);
+
+
+			//Putting the cube on screen
+			function animate() {
+				var delta = 5 * clock.getDelta();
+
+				uniforms2[ "time" ].value += 2 * delta;
+
+				requestAnimationFrame(animate);
+				renderer.render(scene, camera);
+			//Adding the rotation
+			cube1.rotateZ(0.01);
+			cube1.rotateY(0.01);
+			cube2.rotateY(0.01);
+			cube2.rotateX(-0.01);
+
+			if(geometry4)
+				geometry4.rotateX(0.01);
+			
+			if(geometry3) {
+				geometry3.rotateX(-0.01);
+				geometry3.rotateY(-0.01);
+			}
+			renderer.render(scene, camera);
+
+			//My for loop kept breaking so here is this disaster
+			if(!bool){
+				if(num < .5)
+					num += 0.3;
+				else
+					bool = true;
+			}
+			else{
+				if(num > -1.5)
+					num -=0.05;
+				else
+					bool = false;
+			}
+
+			cube1.position.z = num;
+		};
+		animate();
+
+		function addCoolCube() {
+			if(count == 2) {
+				console.log("uwu");
+				let uniforms = {
+					colorB: {type: 'vec3', value: new 
+					THREE.Color(0x00ff00)},
+					colorA: {type: 'vec3', value: new 
+					THREE.Color(0xAA0C0C)}
+				}
+
+				geometry3 = new THREE.BoxGeometry(1, 1, 1);
+				material3 =  new THREE.ShaderMaterial({
+					uniforms: uniforms,
+					fragmentShader: fshader,
+					vertexShader: vshader,
+					precision: "mediump"});
+
+				mesh1 = new THREE.Mesh(geometry3, material3);
+				mesh1.position.x = -2;
+				scene.add(mesh1);
+			}	
+		}
+
+		function addCube4() {
+			if(count == 4) {
+				uniforms2[ "texture1" ].value.wrapS = uniforms2[ "texture1" ].value.wrapT = THREE.RepeatWrapping;
+				uniforms2[ "texture2" ].value.wrapS = uniforms2[ "texture2" ].value.wrapT = THREE.RepeatWrapping;
+
+				geometry4 = new THREE.BoxGeometry();
+				material4 = new THREE.ShaderMaterial( {
+					uniforms: uniforms2,
+					vertexShader: vshader2,
+					fragmentShader: fshader2
+				} );
+
+				mesh2 = new THREE.Mesh(geometry4, material4);
+				mesh2.position.y = 2;
+				mesh2.scale.x = 3.5;
+				mesh2.scale.y = 1.5;
+				scene.add(mesh2);
+			}	
+		}
+
+	</script>
+</body>
+</html>
