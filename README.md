@@ -20,8 +20,9 @@ Cube 4: This was the top cube. This was made with a frag/vertex shader that slap
 
 Cube 5: God this last cube, the bottom cube. This was hell. essentially it was the same as cube 4, a cube made with a frag/vert shader. But we had to tile this, so the way I origionally tried this was to fine where each tile should go and multiply them together, but of course that didn't work because each successive cube got darker, as seen below. What I eventually found out, was that you could move each tile individually and place them at seperate times with if statements.
 
-THIS IS AN EXAMPLE OF AN ISSUE I CAME ACROSS VVV
-bad cube.png goes here
+vvv THIS IS AN EXAMPLE OF AN ISSUE I CAME ACROSS
+
+![](lab4/badCube.png)
 
 Lab3:
 https://drive.google.com/open?id=1Vu_jSCz34-MgD23y3UmJxEmyiquhEMAh
