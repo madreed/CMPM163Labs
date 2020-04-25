@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Lab 4: Textures & Normal Maps</title>
+	<style>
+		body { margin: 0; }
+		canvas { display: block; }
+	</style>
+</head>
+<body>
+	<script src="../three.js-master/build/three.js"></script>
+
+	<script id="vert2" type="x-shader/x-vertex">
+		// code for vertex shader
+		varying vec2 vUv;
+
+		void main() {
+		vUv = uv;
+		vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
+		gl_Position = projectionMatrix * modelViewPosition;
+	}
+</script>
+
+
+<script id="frag2" type="x-shader/x-fragment">
+	//code for fragment shader
+	uniform sampler2D texture1;
+	varying vec2 vUv;
+
+
+	void main() {
+		if(vUv.x <= 0.5 && vUv.y <= 0.5)
+			gl_FragColor = texture2D(texture1, vUv/0.5); //Placing bottom left
+		else if(vUv.x > 0.5 &&  vUv.y <= 0.5)
+			gl_FragColor = texture2D(texture1, vec2(vUv.x - 0.5, vUv.y)/0.5); //placing bottom right
+		else if(vUv.x > 0.5 && vUv.y > 0.5)
+			gl_FragColor = texture2D(texture1, vec2(vUv.x - 0.5, vUv.y - 0.5)/0.5); //Placing top right
+		else
+			gl_FragColor = texture2D(texture1, vec2(vUv.x, vUv.y - 0.5)/0.5); //Placing top left
+	}
+</script>
+
+
+<script>
+			// setup the scene
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+			camera.position.z = 5;
+
+			//Shader function and its variables
+			var geometry2, material2, mesh1;
+
+			function addTextureShaderCube() {
+				if(count == 2) {
+					var uniforms = {texture1: { type: "t", value: THREE.ImageUtils.loadTexture("168.jpg")}};
+
+
+					geometry2 = new THREE.BoxGeometry(1, 1, 1);
+					material2 =  new THREE.ShaderMaterial({
+						uniforms: uniforms,
+						fragmentShader: fshader,
+						vertexShader: vshader,
+						precision: "mediump"
+					});
+
+					mesh1 = new THREE.Mesh(geometry2, material2);
+					mesh1.position.y = 2;
+					scene.add(mesh1);
+				}
+			}
+
+			var geometry3, material3, mesh2;
+
+			function addCube() {
+				var uniforms = {texture1: { type: "t", value: THREE.ImageUtils.loadTexture("176.jpg")}};
+
+				material3 = new THREE.ShaderMaterial({
+					uniforms: uniforms, vertexShader: document.getElementById('vert2').textContent, fragmentShader: document.getElementById('frag2').textContent
+				});
+
+				geometry3 = new THREE.BoxGeometry(1, 1, 1);
+
+				mesh2 = new THREE.Mesh(geometry3, material3);
+				mesh2.position.y = -2;
+				scene.add(mesh2);
+				
+			}
+
+			//Loading shaders
+			THREE.Cache.enabled = true;
+			var count = 0;
+			var loader = new THREE.FileLoader();
+			var fshader, vshader;
+
+			loader.load('shaders/vertexShader.vert',
+      		// onLoad callback
+      		function (data) {
+      			console.log(data); // output the text to the console
+      			vshader = data;
+      			count += 1;
+      			addTextureShaderCube(); 
+      		},
+      		// onProgress callback
+      		function (xhr) {
+      			console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+      		},
+     		// onError callback
+     		function (err) {
+     			console.error('An error happened');
+     		});
+
+			loader.load('shaders/fragmentShader.frag',
+      		// onLoad callback
+      		function (data) {
+      			console.log(data); // output the text to the console
+      			fshader = data;
+      			count += 1;
+      			addTextureShaderCube(); 
+      		},
+      		// onProgress callback
+      		function (xhr) {
+      			console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+      		},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
+
+			/* Here was my testing grounds for that question earlier in the lab
+			var u = 0.375;
+			var v = 0.25;
+
+			console.log("y = " + Math.round(Math.abs((v-1)/0.14)));
+			console.log("x = " + Math.round(Math.abs((u)/0.14)));
+
+			*/
+
+			
+			// setup the cube
+			var geometry = new THREE.BoxGeometry();
+			var texture197 = THREE.ImageUtils.loadTexture("197.jpg");//loading in the textures for some cubes
+			var texture152 = THREE.ImageUtils.loadTexture("152.jpg");
+			var normMap = THREE.ImageUtils.loadTexture("197_norm.jpg"); //Loading the norms for some cubes
+			var normMap2 = THREE.ImageUtils.loadTexture("152_norm.jpg");
+			var material = new THREE.MeshPhongMaterial( { map: texture197} );
+			var materialnorm = new THREE.MeshPhongMaterial( { map: texture197, normalMap: normMap} );
+			var materialnorm2 = new THREE.MeshPhongMaterial( { map: texture152, normalMap: normMap2} );
+
+			var cube = new THREE.Mesh(geometry, materialnorm);
+			scene.add(cube);
+
+			//Adding cube 2
+			var cube2 = new THREE.Mesh(geometry, material);
+			scene.add(cube2);
+			cube2.position.x = -2;
+
+			//Adding cube 3
+			var cube3 = new THREE.Mesh(geometry, materialnorm2);
+			scene.add(cube3);
+			cube3.position.x = 2;
+
+			//adding cube 4
+			addCube();
+			
+			// add the light
+			var light = new THREE.PointLight(0xffffff, 1, 1000);
+			light.position.set(10, 10, 10);
+			scene.add(light);
+
+			function animate() {
+				//The next 4 lines are how I'm animating the light.
+				var timer = Date.now() * 0.00035; 
+				light.position.x = Math.sin( timer * 7 ) * -3;
+				light.position.y = Math.cos( timer * -2 ) * 4;
+				light.position.z = Math.cos( timer * 3 ) * 6;
+				requestAnimationFrame(animate);
+				renderer.render(scene, camera);
+			}
+			animate();
+
+
+
+
+		</script>
+	</body>
+	</html>
