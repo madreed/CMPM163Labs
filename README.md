@@ -1,6 +1,28 @@
 # CMPM163Labs
 all the labs
 
+Lab4:
+a. x = Math.round(Math.abs((u)/0.14)) //0.14 is a consise value that will work for our 8x8, but I would change it for a larger array
+
+b. y = Math.round(Math.abs((v-1)/0.14)) //because the origin is different on both arrays I need to flip it around with that -1
+
+c. (3 , 5) Blue
+
+Cubes: https://drive.google.com/file/d/1P8anrCROP3CBbekkhUaNfIn8d5m4Bybw/view?usp=sharing
+
+Cube 1: This is the center cube. The way this worked was to just slap a texture and a normal onto a cube THREE did all the hard stuff.
+
+Cube 2: This was the left cube, meant to serve as a contrast to the middle. This cube has a texture but no normal, so no fun shadows.
+
+Cube 3: This was the right cube, just another example of a texture paired with a normal.
+
+Cube 4: This was the top cube. This was made with a frag/vertex shader that slaps a texture on a cube.
+
+Cube 5: God this last cube, the bottom cube. This was hell. essentially it was the same as cube 4, a cube made with a frag/vert shader. But we had to tile this, so the way I origionally tried this was to fine where each tile should go and multiply them together, but of course that didn't work because each successive cube got darker, as seen below. What I eventually found out, was that you could move each tile individually and place them at seperate times with if statements.
+
+THIS IS AN EXAMPLE OF AN ISSUE I CAME ACROSS VVV
+bad cube.png goes here
+
 Lab3:
 https://drive.google.com/open?id=1Vu_jSCz34-MgD23y3UmJxEmyiquhEMAh
 
