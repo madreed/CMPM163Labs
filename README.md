@@ -1,6 +1,12 @@
 # CMPM163Labs
 all the labs
 
+Lab5:
+video: https://drive.google.com/file/d/1deLUUZj4ZVF2ag166dst0MM1xbMaAkwI/view?usp=sharing
+I changed up the sky art by going to the specific pieces the skybox used and changing the tint as well as the saturation.
+I then dragged a bunch of skybox parts onto the track, ground, and checkpoint rings in order to change their matirial to something funky looking.
+And more importantly I changed the in-game audio track to some music I recorded and mixed rather than what was already there. To do this I just needed to drop my audio into the audio folder and set the background music to my track.
+
 Lab4:
 a. x = Math.round(Math.abs((u)/0.14)) //0.14 is a consise value that will work for our 8x8, but I would change it for a larger array
 
