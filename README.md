@@ -1,6 +1,12 @@
 # CMPM163Labs
 all the labs
 
+Lab6:
+![](lab6/lab6.jpg)
+https://www.shadertoy.com/view/WslfWB
+https://www.shadertoy.com/view/lsGGDd
+I found this cool since it taught me how to complete the assignment.
+
 Lab5:
 video: https://drive.google.com/file/d/1deLUUZj4ZVF2ag166dst0MM1xbMaAkwI/view?usp=sharing
 I changed up the sky art by going to the specific pieces the skybox used and changing the tint as well as the saturation.
