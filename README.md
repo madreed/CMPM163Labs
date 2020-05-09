@@ -2,7 +2,9 @@
 all the labs
 
 Lab6:
+
 ![](lab6/lab6.jpg)
+
 https://www.shadertoy.com/view/WslfWB
 
 https://www.shadertoy.com/view/lsGGDd
