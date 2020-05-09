@@ -4,7 +4,9 @@ all the labs
 Lab6:
 ![](lab6/lab6.jpg)
 https://www.shadertoy.com/view/WslfWB
+
 https://www.shadertoy.com/view/lsGGDd
+
 I found this cool since it taught me how to complete the assignment.
 
 Lab5:
