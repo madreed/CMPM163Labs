@@ -1,0 +1,46 @@
+Base path: 'J:/unity/2019.3.12f1/Editor/Data', plugins path 'J:/unity/2019.3.12f1/Editor/Data/PlaybackEngines'
+Cmd: initializeCompiler
+Cmd: compileComputeKernel
+  api=4 insize=21596 outsize=27350 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=9615 outsize=4306 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=9809 outsize=5161 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=4823 outsize=885 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=1372 outsize=666 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=14139 outsize=1100 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=11086 outsize=880 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=40264 outsize=37933 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=40264 outsize=1522 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=22295 outsize=14637 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=3718 outsize=1426 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=6119 outsize=2156 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=6745 outsize=3022 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=26542 outsize=15917 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=16295 outsize=67477 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=16295 outsize=47885 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=16295 outsize=70034 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=16295 outsize=60338 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=7696 outsize=5189 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=28593 outsize=426 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=10587 outsize=7594 ok=1
+
+Quitting shader compiler process
