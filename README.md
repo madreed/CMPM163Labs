@@ -1,6 +1,16 @@
 # CMPM163Labs
 all the labs
 
+Lab7:
+
+video: https://drive.google.com/file/d/1jR0MbyWbt9H-V9tAjuT7rAWd36t0brXl/view?usp=sharing
+
+So the island is just a bunch of spheres with two iterations of the  noise texture we worked on.
+The waves are the interesting part. I really didn't like the waves from the tutorial, I did it, but I wanted to do somehting different after. The waves are hooked up to the texture so that the texture also serves as a displacement, the lighter parts of the texture serve as the displacement points so the surface is taller there.
+And the glowy gold around the island is a VFX I repurposed from the final project, I'm sure I will explain it later, and if I did it here I would have nothing to put there! so in due time... (it has to do with scrolling textures multiplied together).
+
+And I couldn't find my partner on the discord... I think my daniel is the only one not on there ;n;
+
 Lab6:
 
 ![](lab6/lab6.jpg)
