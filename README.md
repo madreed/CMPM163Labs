@@ -9,7 +9,7 @@ So the island is just a bunch of spheres with two iterations of the  noise textu
 The waves are the interesting part. I really didn't like the waves from the tutorial, I did it, but I wanted to do somehting different after. The waves are hooked up to the texture so that the texture also serves as a displacement, the lighter parts of the texture serve as the displacement points so the surface is taller there.
 And the glowy gold around the island is a VFX I repurposed from the final project, I'm sure I will explain it later, and if I did it here I would have nothing to put there! so in due time... (it has to do with scrolling textures multiplied together).
 
-And I couldn't find my partner on the discord... I think my daniel is the only one not on there ;n;
+My partner and I talked about alternative wave models and normal mapping of a painting. I taught him how you might make a more intricate wave model using a texture to diffuse the object. He taught me how he turning a 2D painting into a 3D object, it was pretty cool.
 
 Lab6:
 
