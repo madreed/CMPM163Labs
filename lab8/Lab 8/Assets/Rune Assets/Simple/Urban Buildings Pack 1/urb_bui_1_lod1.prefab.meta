@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 16d1e035b07f72445ba6273c1019e60c
+labels:
+- Architecture
+- Building
+- Urban
+- City
+- Town
+- House
+timeCreated: 1427654481
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: building
+  assetBundleVariant: 
