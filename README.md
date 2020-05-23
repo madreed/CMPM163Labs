@@ -1,6 +1,11 @@
 # CMPM163Labs
 all the labs
 
+Lab8: 
+![](fallout.jpg)
+![](mycity.jpg)
+Well origionally I wanted to make a synthwave city. But when the render pipeline kept breaking my fatigue lead me to a darkside mindset that eventually lead me to think of destroying my city like fallout.
+
 Lab7:
 
 video: https://drive.google.com/file/d/1jR0MbyWbt9H-V9tAjuT7rAWd36t0brXl/view?usp=sharing
