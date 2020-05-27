@@ -6,6 +6,8 @@ Lab8:
 ![](mycity.jpg)
 Well origionally I wanted to make a synthwave city. But when the render pipeline kept breaking my fatigue lead me to a darkside mindset that eventually lead me to think of destroying my city like fallout.
 
+My partner just messaged and they told me that they struggled most with the perlin noise generation because it was difficult to understand. But once they figured that out they really enjoyed working with seeds to recreate maps.
+
 Lab7:
 
 video: https://drive.google.com/file/d/1jR0MbyWbt9H-V9tAjuT7rAWd36t0brXl/view?usp=sharing
